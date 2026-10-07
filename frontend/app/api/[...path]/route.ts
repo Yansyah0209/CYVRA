@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 const allowed =
-  /^(projects(?:\/[a-zA-Z0-9-]+(?:\/(?:demo|import|dataset|analysis|simulate|recommendations|explain))?)?)$/;
+  /^(?:web\/assessments(?:\/[a-f0-9-]+)?|projects(?:\/[a-zA-Z0-9-]+(?:\/(?:demo|import|dataset|analysis|simulate|recommendations|explain))?)?)$/;
 async function proxy(
   req: NextRequest,
   context: { params: Promise<{ path: string[] }> },

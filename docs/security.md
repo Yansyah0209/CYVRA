@@ -1,5 +1,5 @@
 # Security configuration
-Run on localhost and use only owned or authorized evidence. No autonomous scanning or exploitation is implemented. The default Postgres password is a local-only convenience; change it when adapting deployment.
+Run on localhost and use only owned or authorized evidence. Website Check retrieves an explicitly requested, bounded public response. No autonomous crawling or exploitation is implemented. See [website boundaries](website-assessments.md). The default Postgres password is a local-only convenience; change it when adapting deployment.
 
 CYVRA_API_KEY, if set, protects backend `/api/` routes and is supplied server-side by the Next.js proxy. The frontend itself has no login; a key is not enough to make the application public-safe. Health and API schema/docs remain public at loopback.
 

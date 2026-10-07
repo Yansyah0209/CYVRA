@@ -1,5 +1,5 @@
 # Threat model
-Scope: a trusted local single user imports authorized security data. Assets: imported topology, evidence, findings, DB snapshots, optional API key. Boundaries: browser → Next.js proxy → FastAPI → database. No active scanner or infrastructure actuator exists.
+Scope: a trusted local single user imports authorized security data. Assets: imported topology, evidence, findings, DB snapshots, optional API key. Boundaries: browser → Next.js proxy → FastAPI → database. A bounded public website response assessment is available; no exploitation or infrastructure actuator exists.
 
 Risks and controls:
 - Malformed or oversized imports: streamed API 2 MB cap, schema collection limits, reference/range validation.
@@ -12,3 +12,8 @@ Risks and controls:
 - Accidental production changes: no actuator; simulations are copies.
 
 Not solved: multi-user authentication, tenant isolation, encryption at rest, fine-grained authorization, audit history, robust distributed rate limits, browser session protection, external secret management, backups, or independent evidence verification. Do not deploy publicly as-is.
+
+
+## Website response retrieval
+
+Website Check introduces outbound HTTP requests. See [request boundaries](website-assessments.md) for public-address validation, pinned DNS, redirect restrictions, TLS validation and resource limits. Do not expose the frontend proxy publicly as a customer authentication boundary. Reports contain URLs and observations; production services require per-tenant access controls, retention policy and enforced outbound isolation.

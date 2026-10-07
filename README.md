@@ -1,5 +1,5 @@
 # CYVRA
-**Cyber Vulnerability & Risk Analysis AI** — an evidence-aware, explainable defensive cyber risk intelligence MVP.
+**Cyber Vulnerability & Risk Analysis AI** — a local developer workspace for public website assessments and evidence-aware risk analysis.
 
 CYVRA imports security evidence, ranks contextual risk, constructs a risk graph, identifies **possible** connectivity paths to critical assets, and simulates remediation without changing infrastructure. Analytical engines decide; the offline explanation provider presents their structured results. No paid API or LLM key is required.
 
@@ -11,9 +11,19 @@ git checkout feat/cyvra-mvp
 cp .env.example .env
 docker compose up --build
 ```
-Open **http://localhost:3000**, choose **Launch demo**, then explore Overview, Risk Graph, Assets, Findings, Attack Paths, Remediation, and CYVRA AI. API documentation: **http://localhost:8000/docs**. Health: **http://localhost:8000/health**.
+Open **http://localhost:3000**. In **Website Check**, enter an authorized public URL, confirm permission and choose **Check website**. Expand findings for locations, evidence and recommendations; reopen saved reports or export JSON. Choose **Launch demo** to explore evidence-based Overview, Risk Graph, Assets, Findings, Attack Paths, Remediation and CYVRA AI. API documentation: **http://localhost:8000/docs**. Health: **http://localhost:8000/health**.
 
 PostgreSQL data persists in the `cyvra_data` volume. The demo is explicitly synthetic and contains no genuine CVEs or threat intelligence. Its fixed evidence timestamps intentionally demonstrate confidence decay.
+
+## Windows: launch or update an existing checkout
+
+From PowerShell:
+```powershell
+cd "C:\Users\Muhammad Kika Febriy\CYVRA"
+git pull --ff-only origin feat/cyvra-mvp
+.\start.cmd
+```
+After the update, you can also double-click **start.cmd** in the CYVRA folder. Docker Desktop must be installed. The launcher builds/starts the application, keeps an existing `.env`, and opens the browser when ready. First startup needs internet access for images and dependencies.
 
 ## Without Docker
 Prerequisites: Python 3.12+, Node 22+, npm. From the repository root:
@@ -35,9 +45,12 @@ npm run dev
 The local backend defaults to SQLite; Docker uses PostgreSQL. Do not load the Docker `.env` DATABASE_URL into the SQLite setup. Frontend server proxies API requests using `BACKEND_URL` (default `http://127.0.0.1:8000`). The optional API key stays server-side.
 
 ## Use your own authorized evidence
-Create an environment, then import JSON matching [the demo schema](datasets/synthetic/aurora.json). Import replaces that environment's dataset atomically. Export retrieves the stored dataset. Strict Pydantic validation rejects unknown fields, invalid ranges, duplicate record IDs, and unresolved references. Payload cap: 2 MB; 200 assets, 2,000 findings, 1,000 relationships. JSON is the implemented ingestion adapter; scanner, telemetry, and threat-intelligence integrations are future work.
+Create an environment, then import JSON matching [the demo schema](datasets/synthetic/aurora.json). Import replaces that environment's dataset atomically. Export retrieves the stored dataset. Strict Pydantic validation rejects unknown fields, invalid ranges, duplicate record IDs, and unresolved references. Payload cap: 2 MB; 200 assets, 2,000 findings, 1,000 relationships. JSON is the implemented evidence ingestion adapter; integrations with third-party scanners, telemetry and threat intelligence are future work.
 
 ## Implemented
+- URL assessments with saved reports, location/evidence/remediation details, coverage labels, and JSON export. See [website methodology and boundaries](docs/website-assessments.md).
+- Minimal dark dashboard using the supplied CYVRA logo.
+- Windows launcher for Docker startup and readiness checks.
 - Project creation and persistent JSON snapshots through SQLAlchemy and Alembic.
 - Transparent six-factor contextual scores, mitigation, individual contributions, separate evidence confidence.
 - Evidence provenance, age decay, source-group correlation handling, contradictory and missing evidence.
@@ -71,7 +84,7 @@ See [validation notes](docs/validation.md) for checks actually run and limitatio
 ## Research MVP limits
 This is a **local, single-user research MVP**, not a multi-tenant production SaaS. No public deployment is configured. Docker binds ports to loopback. The optional backend API key is not user authentication; the frontend proxy is intended for a trusted local user. Do not expose it publicly without real authentication, tenant isolation, rate limits, encrypted transport, security review, and deployment controls.
 
-Risk and confidence are heuristic indices, not calibrated probabilities. Network connectivity does not prove exploitation. Counterfactual reductions are modeled, not guaranteed. Optimization is greedy and bounded, not exact. No scanner, exploitation, malware, external enrichment, trained ML, or real-time monitoring runs. Benchmark results are synthetic and share the production model's objective; they cannot validate real-world accuracy or patentability.
+Risk and confidence are heuristic indices, not calibrated probabilities. Network connectivity does not prove exploitation. Counterfactual reductions are modeled, not guaranteed. Optimization is greedy and bounded, not exact. Website Check retrieves a bounded public response; it cannot discover every leak or replace a penetration test. No exploitation, malware, external enrichment, trained ML, or real-time monitoring runs. Benchmark results are synthetic and share the production model's objective; they cannot validate real-world accuracy or patentability.
 
 Start with [architecture](docs/architecture.md), [risk methodology](docs/risk-methodology.md), and [threat model](docs/threat-model.md). The implementation is a foundation for user validation, calibration, independent benchmarking, and future integrations—not a claim of enterprise maturity.
 

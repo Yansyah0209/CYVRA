@@ -12,13 +12,15 @@ from app.schemas import ProjectCreate, Dataset, SimulationRequest, OptimizeReque
 from app.intelligence.risk import analyze
 from app.intelligence.counterfactual import simulate, recommend
 from app.ai.explainer import GroundedExplainer
+from app.web.api import router as web_router
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s %(message)s")
 app = FastAPI(
     title="CYVRA",
-    version="0.1.0",
+    version="0.2.0",
     description="Defensive evidence-aware cyber risk intelligence. Local single-user research MVP.",
 )
+app.include_router(web_router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=os.getenv("CORS_ORIGINS", "http://localhost:3000").split(","),
@@ -52,7 +54,7 @@ async def guard(request: Request, call_next):
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "version": "0.1.0"}
+    return {"status": "ok", "version": "0.2.0"}
 
 
 @app.get("/api/projects")

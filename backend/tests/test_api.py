@@ -1,29 +1,3 @@
-import pytest
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import StaticPool
-from app.main import app
-from app.db import Base, session
-
-
-@pytest.fixture
-def client():
-    engine = create_engine("sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool)
-    Base.metadata.create_all(engine)
-    factory = sessionmaker(engine, expire_on_commit=False)
-
-    def override():
-        with factory() as db:
-            yield db
-
-    app.dependency_overrides[session] = override
-    with TestClient(app) as c:
-        yield c
-    app.dependency_overrides.clear()
-    engine.dispose()
-
-
 def test_complete_workflow(client, data):
     p = client.post("/api/projects", json={"name": "test"})
     assert p.status_code == 201

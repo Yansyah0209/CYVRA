@@ -25,6 +25,15 @@ def main():
             time.sleep(0.5)
     else:
         raise RuntimeError("Compose frontend/backend/database were not ready within 60s")
+    assert request("/web/assessments") == []
+    try:
+        request("/web/assessments", {"url": "http://127.0.0.1", "authorized": True})
+        raise AssertionError("Private URL was accepted")
+    except urllib.error.HTTPError as error:
+        assert error.code == 422
+        assert "local/private" in error.read().decode()
+    with urllib.request.urlopen("http://127.0.0.1:3000/cyvra-logo.png") as response:
+        assert response.read(8) == b"\x89PNG\r\n\x1a\n"
     project = request("/projects", {"name": "Compose integration"})["id"]
     route = "/projects/" + project
     request(route + "/demo", {})

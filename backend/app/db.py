@@ -16,6 +16,14 @@ class Project(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
 
+class WebAssessment(Base):
+    __tablename__ = "web_assessments"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    url: Mapped[str] = mapped_column(String(2000))
+    report: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+
+
 url = os.getenv("DATABASE_URL", "sqlite:///./cyvra.db")
 engine = create_engine(
     url, connect_args={"check_same_thread": False} if url.startswith("sqlite") else {}, pool_pre_ping=True

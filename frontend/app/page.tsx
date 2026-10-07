@@ -15,6 +15,7 @@ import {
   Activity,
   Download,
   Plus,
+  Globe,
 } from "lucide-react";
 import {
   ReactFlow,
@@ -24,6 +25,7 @@ import {
   MarkerType,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import WebsiteCheck from "./components/website-check";
 
 type Asset = {
   id: string;
@@ -108,6 +110,7 @@ type Simulation = {
 };
 type Project = { id: string; name: string; has_data?: boolean };
 const nav = [
+  { name: "Website Check", icon: Globe },
   { name: "Overview", icon: LayoutDashboard },
   { name: "Risk Graph", icon: Network },
   { name: "Assets", icon: Server },
@@ -135,7 +138,7 @@ function Badge({ category }: { category: string }) {
   return <span className={"badge " + category}>{category}</span>;
 }
 export default function Dashboard() {
-  const [tab, setTab] = useState("Overview"),
+  const [tab, setTab] = useState("Website Check"),
     [projects, setProjects] = useState<Project[]>([]),
     [project, setProject] = useState(""),
     [analysis, setAnalysis] = useState<Analysis | null>(null),
@@ -190,6 +193,7 @@ export default function Dashboard() {
       const p = await api<Project>("projects", { name });
       setProjects((v) => [...v, { ...p, has_data: false }]);
       setProject(p.id);
+      setTab("Overview");
       setAnalysis(null);
       setPlan(null);
       if (demo) {
@@ -284,15 +288,20 @@ export default function Dashboard() {
     <div className="shell">
       <aside className="sidebar">
         <div className="brand">
-          <Shield size={31} />
-          <span>
-            CYVRA<small>RISK INTELLIGENCE</small>
-          </span>
+          <div className="logo-frame">
+            <img
+              className="logo-image"
+              src="/cyvra-logo.png"
+              alt="CYVRA"
+              width="1600"
+              height="1600"
+            />
+          </div>
         </div>
         <div className="workspace">
           <span className="eyebrow">WORKSPACE</span>
-          <strong>Research workspace</strong>
-          <span className="muted">Local · single user</span>
+          <strong>Developer workspace</strong>
+          <span className="muted">Local workspace</span>
         </div>
         <nav>
           {nav.map(({ name, icon: Icon }) => (
@@ -315,7 +324,7 @@ export default function Dashboard() {
             Human decisions remain central.
           </p>
           <div className="version">
-            CYVRA MVP <span>v0.1.0</span>
+            CYVRA <span>v0.2.0</span>
           </div>
         </div>
       </aside>
@@ -326,8 +335,7 @@ export default function Dashboard() {
             <span>{tab}</span>
           </div>
           <div className="header-right">
-            <span className="status-dot" /> Analytical engines
-            <span className="avatar">MK</span>
+            <span>Developer workspace</span>
           </div>
         </header>
         <main>
@@ -336,7 +344,7 @@ export default function Dashboard() {
               <div className="eyebrow">CYBER VULNERABILITY & RISK ANALYSIS</div>
               <h1>{tab}</h1>
               <p className="muted">
-                Turn fragmented evidence into clear security decisions.
+                Security findings, with evidence and actions.
               </p>
             </div>
             <div className="actions">
@@ -376,7 +384,7 @@ export default function Dashboard() {
               Analyzing supplied evidence…
             </div>
           )}
-          {project && (
+          {tab !== "Website Check" && project && (
             <div className="toolbar">
               <label className={"button " + (busy ? "disabled" : "")}>
                 <Upload size={15} /> Import JSON
@@ -403,7 +411,9 @@ export default function Dashboard() {
               </span>
             </div>
           )}
-          {!analysis ? (
+          {tab === "Website Check" ? (
+            <WebsiteCheck />
+          ) : !analysis ? (
             <section className="empty">
               <div className="empty-icon">
                 <Network size={50} />
