@@ -1,0 +1,75 @@
+name: CYVRA checks
+on:
+  push:
+  pull_request:
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r backend/requirements.lock
+      - run: pytest -q
+      - run: ruff check backend research scripts
+      - run: ruff format --check backend research scripts
+      - run: cd backend && alembic upgrade head
+      - run: PYTHONPATH=backend python research/benchmarks/run.py --seeds 5 --budget 3
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: npm run typecheck
+        working-directory: frontend
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pip install -r backend/requirements.lock
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: python scripts/smoke.py
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: npm run test:e2e
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-review
+          path: frontend/test-results/
+          retention-days: 7
+  compose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: cp .env.example .env
+      - run: docker compose config --quiet
+      - run: docker compose up --build -d
+      - run: python scripts/compose_smoke.py
+      - if: always()
+        run: docker compose logs --no-color
+      - if: always()
+        run: docker compose down -v

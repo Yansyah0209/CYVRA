@@ -1,0 +1,6 @@
+# Candidate path reasoning
+Entry points: internet-exposed assets. Targets: assets with criticality ≥0.8. A zero-hop entry-to-critical-self path is valid if supported by an open finding. Directed enabled relationships are traversed; at least one open finding on the candidate asset path is required. Paths terminate or continue at critical targets to allow downstream targets.
+
+Deterministic bounded DFS excludes cycles, preserves parallel relationship sequences, and stops at six hops, 200 returned paths, or 10,000 expansions. Results expose truncation and configured bounds. Traversal sorts entries and relationship IDs; ranking sorts risk then path ID. This is bounded discovery, not exhaustive global top-K. Large graphs may omit high-value paths; use smaller environments and do not interpret truncated simulation counts as complete.
+
+Risk = largest open finding risk on path × target criticality. Confidence = minimum of supporting finding confidence and supplied relationship confidence. This conservative bottleneck is a heuristic, not a probability of successful attack; it can be overly conservative when multiple findings are alternative prerequisites. Relationships lack enforced exploit preconditions. Every result is classified possible; inferred relationship flags and finding/relationship IDs remain visible.
