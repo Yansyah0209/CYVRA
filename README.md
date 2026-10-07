@@ -56,8 +56,8 @@ ruff check backend research scripts
 ruff format --check backend research scripts
 cd frontend
 npm ci
-npm run typecheck
 npm run build
+npm run typecheck
 npm run format:check
 # Back at repository root:
 python scripts/smoke.py
