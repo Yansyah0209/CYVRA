@@ -28,7 +28,7 @@ class Resources(HTMLParser):
         )
         value = fields.get(field or "", "") or ""
         if field and value.lower().startswith("http://") and len(self.insecure) < 20:
-            self.insecure.append(f"<{tag}> {field} attribute")
+            self.insecure.append(f"HTML line {self.getpos()[0]} · <{tag}> {field} attribute")
 
 
 def inspect(page: Page) -> dict:
@@ -79,7 +79,7 @@ def inspect(page: Page) -> dict:
     record(
         "hsts",
         "HSTS response policy",
-        bool(max_age and int(max_age.group(1)) > 0),
+        bool(max_age and len(max_age.group(1)) <= 12 and int(max_age.group(1)) > 0),
         "low",
         "No positive HSTS max-age was observed.",
         "Browsers may revisit the origin over HTTP unless other protection applies.",
@@ -186,7 +186,11 @@ def inspect(page: Page) -> dict:
                         "severity": "low",
                         "classification": "configuration_review",
                         "location": page.url + " · Set-Cookie #" + str(len(cookies)),
-                        "evidence": "Absent attributes: " + ", ".join(missing) + ". Cookie values are not retained.",
+                        "evidence": "Cookie "
+                        + name[:100]
+                        + ": absent attributes "
+                        + ", ".join(missing)
+                        + ". Values are not retained.",
                         "impact": "Required attributes depend on the cookie purpose; JavaScript-readable cookies may intentionally omit HttpOnly.",
                         "recommendation": "For sensitive session cookies use Secure, HttpOnly, and an appropriate SameSite policy. Review functionality before changing other cookies.",
                         "verification": "Attribute omission observed; cookie sensitivity and exploitability are unknown.",
@@ -239,14 +243,15 @@ def inspect(page: Page) -> dict:
         ),
     ]
     for key, pattern, title, severity in markers:
-        if body and re.search(pattern, body):
+        match = re.search(pattern, body) if body else None
+        if match:
             findings.append(
                 {
                     "id": key,
                     "title": title,
                     "severity": severity,
                     "classification": "potential_exposure",
-                    "location": page.url,
+                    "location": page.url + " · HTML line " + str(body.count("\n", 0, match.start()) + 1),
                     "evidence": "A matching marker was observed. Raw response content and possible secret values are not retained.",
                     "impact": "Could be sensitive output or an intentional example. Authenticity and context must be verified privately.",
                     "recommendation": "Review the response. If a real private key was exposed, remove it and revoke/rotate it through your normal incident process. Disable detailed public error output where applicable.",

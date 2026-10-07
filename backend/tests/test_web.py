@@ -142,3 +142,15 @@ def test_rate_limit_and_error(client, monkeypatch):
     result = client.post("/api/web/assessments", json={"url": "https://example.com", "authorized": True})
     assert result.status_code == 429 and result.headers["retry-after"] == "60"
     assert client.get("/api/web/assessments").json() == []
+
+
+def test_untrusted_large_hsts_does_not_crash():
+    report = inspect(page([("Content-Type", "text/html"), ("Strict-Transport-Security", "max-age=" + "9" * 5000)]))
+    assert any(f["id"] == "hsts" for f in report["findings"])
+
+
+def test_body_markers_include_line_without_raw_content():
+    report = inspect(page(body=b"<html>\n-----BEGIN PRIVATE KEY-----\nPRIVATE_VALUE"))
+    finding = next(f for f in report["findings"] if f["id"] == "private-key-marker")
+    assert finding["location"].endswith("HTML line 2")
+    assert "PRIVATE_VALUE" not in json.dumps(report)

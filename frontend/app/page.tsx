@@ -265,9 +265,9 @@ export default function Dashboard() {
       position: { x: (i % 4) * 250, y: Math.floor(i / 4) * 150 },
       data: { label: n.name || n.title || n.id },
       style: {
-        background: n.node_type === "FINDING" ? "#37211f" : "#102928",
-        color: "#e7f3f0",
-        border: "1px solid #36514c",
+        background: n.node_type === "FINDING" ? "#37211f" : "#191919",
+        color: "#eeeeee",
+        border: "1px solid #3a3a3a",
         borderRadius: 10,
         width: 210,
         padding: 12,
@@ -280,9 +280,9 @@ export default function Dashboard() {
       target: e.target,
       label: e.type,
       markerEnd: { type: MarkerType.ArrowClosed },
-      style: { stroke: "#659d8e" },
-      labelStyle: { fill: "#b7c8c3", fontSize: 10 },
-      labelBgStyle: { fill: "#101b1b" },
+      style: { stroke: "#767676" },
+      labelStyle: { fill: "#bcbcbc", fontSize: 10 },
+      labelBgStyle: { fill: "#111111" },
     })) || [];
   return (
     <div className="shell">
@@ -602,7 +602,7 @@ export default function Dashboard() {
                     >
                       <Background />
                       <Controls />
-                      <MiniMap nodeColor="#477a6d" />
+                      <MiniMap nodeColor="#666666" />
                     </ReactFlow>
                   </div>
                   <p className="muted">
