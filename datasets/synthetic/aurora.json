@@ -1,0 +1,301 @@
+{
+  "assets": [
+    {
+      "id": "web",
+      "name": "Public web",
+      "type": "application",
+      "criticality": 0.5,
+      "internet_exposed": true,
+      "owner": "Aurora Lab",
+      "environment": "synthetic"
+    },
+    {
+      "id": "gateway",
+      "name": "API gateway",
+      "type": "api",
+      "criticality": 0.6,
+      "internet_exposed": true,
+      "owner": "Aurora Lab",
+      "environment": "synthetic"
+    },
+    {
+      "id": "api",
+      "name": "Internal billing API",
+      "type": "api",
+      "criticality": 0.8,
+      "internet_exposed": false,
+      "owner": "Aurora Lab",
+      "environment": "synthetic"
+    },
+    {
+      "id": "identity",
+      "name": "Billing service account",
+      "type": "identity",
+      "criticality": 0.7,
+      "internet_exposed": false,
+      "owner": "Aurora Lab",
+      "environment": "synthetic"
+    },
+    {
+      "id": "db",
+      "name": "Customer database",
+      "type": "database",
+      "criticality": 1,
+      "internet_exposed": false,
+      "owner": "Aurora Lab",
+      "environment": "synthetic"
+    },
+    {
+      "id": "lab",
+      "name": "Isolated test server",
+      "type": "server",
+      "criticality": 0.1,
+      "internet_exposed": false,
+      "owner": "Aurora Lab",
+      "environment": "synthetic"
+    },
+    {
+      "id": "repo",
+      "name": "Developer repository",
+      "type": "repository",
+      "criticality": 0.4,
+      "internet_exposed": false,
+      "owner": "Aurora Lab",
+      "environment": "synthetic"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "asset_id": "web",
+      "title": "Synthetic public dependency weakness",
+      "cvss": 6.8,
+      "known_exploited": true,
+      "exploit_likelihood": 0.8,
+      "telemetry": true,
+      "evidence": [
+        {
+          "id": "F-01-scanner",
+          "source": "synthetic scanner fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.9,
+          "group": "scanner"
+        },
+        {
+          "id": "F-01-inventory",
+          "source": "synthetic inventory fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.85,
+          "group": "inventory"
+        }
+      ]
+    },
+    {
+      "id": "F-02",
+      "asset_id": "gateway",
+      "title": "Synthetic access policy misconfiguration",
+      "cvss": 7.2,
+      "known_exploited": false,
+      "exploit_likelihood": 0.5,
+      "telemetry": null,
+      "evidence": [
+        {
+          "id": "F-02-scanner",
+          "source": "synthetic scanner fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.9,
+          "group": "scanner"
+        },
+        {
+          "id": "F-02-inventory",
+          "source": "synthetic inventory fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.85,
+          "group": "inventory"
+        }
+      ]
+    },
+    {
+      "id": "F-03",
+      "asset_id": "api",
+      "title": "Synthetic authorization weakness",
+      "cvss": 8.1,
+      "known_exploited": false,
+      "exploit_likelihood": 0.6,
+      "telemetry": false,
+      "evidence": [
+        {
+          "id": "F-03-scanner",
+          "source": "synthetic scanner fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.9,
+          "group": "scanner"
+        },
+        {
+          "id": "F-03-inventory",
+          "source": "synthetic inventory fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.85,
+          "group": "inventory"
+        }
+      ]
+    },
+    {
+      "id": "F-04",
+      "asset_id": "identity",
+      "title": "Synthetic excessive service privilege",
+      "cvss": 6,
+      "known_exploited": false,
+      "exploit_likelihood": null,
+      "telemetry": null,
+      "evidence": [
+        {
+          "id": "F-04-scanner",
+          "source": "synthetic scanner fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.9,
+          "group": "scanner"
+        },
+        {
+          "id": "F-04-inventory",
+          "source": "synthetic inventory fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.85,
+          "group": "inventory"
+        }
+      ]
+    },
+    {
+      "id": "F-05",
+      "asset_id": "db",
+      "title": "Synthetic outdated database component",
+      "cvss": 7.8,
+      "known_exploited": false,
+      "exploit_likelihood": 0.2,
+      "telemetry": false,
+      "evidence": [
+        {
+          "id": "F-05-scanner",
+          "source": "synthetic scanner fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.9,
+          "group": "scanner"
+        },
+        {
+          "id": "F-05-inventory",
+          "source": "synthetic inventory fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.85,
+          "group": "inventory"
+        }
+      ]
+    },
+    {
+      "id": "F-06",
+      "asset_id": "lab",
+      "title": "Synthetic isolated critical vulnerability",
+      "cvss": 9.8,
+      "known_exploited": false,
+      "exploit_likelihood": 0.1,
+      "telemetry": false,
+      "evidence": [
+        {
+          "id": "F-06-scanner",
+          "source": "synthetic scanner fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.9,
+          "group": "scanner"
+        },
+        {
+          "id": "F-06-inventory",
+          "source": "synthetic inventory fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.85,
+          "group": "inventory"
+        }
+      ]
+    },
+    {
+      "id": "F-07",
+      "asset_id": "repo",
+      "title": "Synthetic dependency advisory",
+      "cvss": 5.3,
+      "known_exploited": null,
+      "exploit_likelihood": null,
+      "telemetry": null,
+      "evidence": [
+        {
+          "id": "F-07-scanner",
+          "source": "synthetic scanner fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.9,
+          "group": "scanner"
+        },
+        {
+          "id": "F-07-inventory",
+          "source": "synthetic inventory fixture",
+          "collected_at": "2026-01-01T00:00:00Z",
+          "reliability": 0.85,
+          "group": "inventory"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "R-1",
+      "source": "web",
+      "target": "api",
+      "type": "CONNECTS_TO",
+      "confidence": 0.9,
+      "observed": true,
+      "evidence_ids": [
+        "F-01-inventory"
+      ]
+    },
+    {
+      "id": "R-2",
+      "source": "gateway",
+      "target": "api",
+      "type": "CONNECTS_TO",
+      "confidence": 0.85,
+      "observed": true,
+      "evidence_ids": [
+        "F-02-inventory"
+      ]
+    },
+    {
+      "id": "R-3",
+      "source": "api",
+      "target": "identity",
+      "type": "TRUSTS",
+      "confidence": 0.7,
+      "observed": false,
+      "evidence_ids": [
+        "F-03-inventory"
+      ]
+    },
+    {
+      "id": "R-4",
+      "source": "identity",
+      "target": "db",
+      "type": "HAS_ACCESS_TO",
+      "confidence": 0.95,
+      "observed": true,
+      "evidence_ids": [
+        "F-04-inventory"
+      ]
+    },
+    {
+      "id": "R-5",
+      "source": "api",
+      "target": "db",
+      "type": "CONNECTS_TO",
+      "confidence": 0.8,
+      "observed": true,
+      "evidence_ids": [
+        "F-03-inventory"
+      ]
+    }
+  ]
+}
