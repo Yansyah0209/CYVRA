@@ -1,0 +1,33 @@
+{
+  "name": "cyvra-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "node scripts/start.mjs",
+    "typecheck": "tsc --noEmit",
+    "postbuild": "node scripts/prepare-standalone.mjs",
+    "test:e2e": "playwright test",
+    "format:check": "prettier --check app scripts next.config.ts playwright.config.ts tests"
+  },
+  "dependencies": {
+    "@xyflow/react": "12.8.5",
+    "lucide-react": "0.468.0",
+    "next": "15.5.27",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "@types/node": "22.15.3",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "prettier": "3.5.3",
+    "typescript": "5.8.3"
+  },
+  "overrides": {
+    "postcss": "8.5.29",
+    "sharp": "0.35.5"
+  }
+}
