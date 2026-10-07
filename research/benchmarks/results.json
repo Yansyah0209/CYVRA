@@ -1,0 +1,945 @@
+{
+  "warning": "Synthetic, internal model objective; differing action spaces; no independent outcome labels.",
+  "seeds": 20,
+  "budget": 3,
+  "clock": "2026-01-02T00:00:00+00:00",
+  "summary": {
+    "centrality": {
+      "objective_reduction": 153.167,
+      "risk_reduction": 4.576,
+      "paths_removed": 0.85,
+      "runtime_ms": 0.891,
+      "cost": 3
+    },
+    "contextual": {
+      "objective_reduction": 199.922,
+      "risk_reduction": 17.867,
+      "paths_removed": 0.85,
+      "runtime_ms": 0.809,
+      "cost": 3
+    },
+    "cvss": {
+      "objective_reduction": 111.53,
+      "risk_reduction": 4.576,
+      "paths_removed": 0.45,
+      "runtime_ms": 0.962,
+      "cost": 3
+    },
+    "cyvra_greedy": {
+      "objective_reduction": 477.909,
+      "risk_reduction": 38.904,
+      "paths_removed": 6,
+      "runtime_ms": 31.854,
+      "cost": 3
+    },
+    "severity_plus_exploitation": {
+      "objective_reduction": 120.778,
+      "risk_reduction": 11.868,
+      "paths_removed": 0.45,
+      "runtime_ms": 0.818,
+      "cost": 3
+    }
+  },
+  "records": [
+    {
+      "seed": 0,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 58.64,
+      "risk_reduction": 19.55,
+      "paths_removed": 0,
+      "runtime_ms": 1.786
+    },
+    {
+      "seed": 0,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 58.64,
+      "risk_reduction": 19.55,
+      "paths_removed": 0,
+      "runtime_ms": 0.858
+    },
+    {
+      "seed": 0,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 142.89,
+      "risk_reduction": 24.43,
+      "paths_removed": 0,
+      "runtime_ms": 0.867
+    },
+    {
+      "seed": 0,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 172.42,
+      "risk_reduction": 19.55,
+      "paths_removed": 1,
+      "runtime_ms": 0.82
+    },
+    {
+      "seed": 0,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 498.05,
+      "risk_reduction": 44.43,
+      "paths_removed": 6,
+      "runtime_ms": 30.752
+    },
+    {
+      "seed": 1,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 0.0,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.949
+    },
+    {
+      "seed": 1,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 0.0,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.775
+    },
+    {
+      "seed": 1,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 159.92,
+      "risk_reduction": 10.72,
+      "paths_removed": 1,
+      "runtime_ms": 0.839
+    },
+    {
+      "seed": 1,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 116.59,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.781
+    },
+    {
+      "seed": 1,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 449.14,
+      "risk_reduction": 38.79,
+      "paths_removed": 6,
+      "runtime_ms": 31.028
+    },
+    {
+      "seed": 2,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 207.99,
+      "risk_reduction": 20.91,
+      "paths_removed": 1,
+      "runtime_ms": 0.888
+    },
+    {
+      "seed": 2,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 207.99,
+      "risk_reduction": 20.91,
+      "paths_removed": 1,
+      "runtime_ms": 1.07
+    },
+    {
+      "seed": 2,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 382.93,
+      "risk_reduction": 28.4,
+      "paths_removed": 2,
+      "runtime_ms": 0.813
+    },
+    {
+      "seed": 2,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 207.99,
+      "risk_reduction": 20.91,
+      "paths_removed": 1,
+      "runtime_ms": 0.863
+    },
+    {
+      "seed": 2,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 533.11,
+      "risk_reduction": 40.91,
+      "paths_removed": 6,
+      "runtime_ms": 40.33
+    },
+    {
+      "seed": 3,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 66.32,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.902
+    },
+    {
+      "seed": 3,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 66.32,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.821
+    },
+    {
+      "seed": 3,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 269.9,
+      "risk_reduction": 14.7,
+      "paths_removed": 2,
+      "runtime_ms": 0.768
+    },
+    {
+      "seed": 3,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 66.32,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.959
+    },
+    {
+      "seed": 3,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 438.38,
+      "risk_reduction": 32.8,
+      "paths_removed": 6,
+      "runtime_ms": 30.37
+    },
+    {
+      "seed": 4,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 110.5,
+      "risk_reduction": 5.07,
+      "paths_removed": 0,
+      "runtime_ms": 0.875
+    },
+    {
+      "seed": 4,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 110.5,
+      "risk_reduction": 5.07,
+      "paths_removed": 0,
+      "runtime_ms": 0.786
+    },
+    {
+      "seed": 4,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 151.4,
+      "risk_reduction": 19.25,
+      "paths_removed": 0,
+      "runtime_ms": 0.826
+    },
+    {
+      "seed": 4,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 161.02,
+      "risk_reduction": 5.07,
+      "paths_removed": 0,
+      "runtime_ms": 0.808
+    },
+    {
+      "seed": 4,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 455.52,
+      "risk_reduction": 39.68,
+      "paths_removed": 6,
+      "runtime_ms": 30.944
+    },
+    {
+      "seed": 5,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 86.23,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.964
+    },
+    {
+      "seed": 5,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 113.67,
+      "risk_reduction": 9.8,
+      "paths_removed": 0,
+      "runtime_ms": 0.804
+    },
+    {
+      "seed": 5,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 338.01,
+      "risk_reduction": 12.4,
+      "paths_removed": 2,
+      "runtime_ms": 0.77
+    },
+    {
+      "seed": 5,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 163.33,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.977
+    },
+    {
+      "seed": 5,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 524.67,
+      "risk_reduction": 29.8,
+      "paths_removed": 6,
+      "runtime_ms": 31.696
+    },
+    {
+      "seed": 6,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 66.72,
+      "risk_reduction": 19.52,
+      "paths_removed": 0,
+      "runtime_ms": 0.947
+    },
+    {
+      "seed": 6,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 66.72,
+      "risk_reduction": 19.52,
+      "paths_removed": 0,
+      "runtime_ms": 0.805
+    },
+    {
+      "seed": 6,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 176.56,
+      "risk_reduction": 30.2,
+      "paths_removed": 0,
+      "runtime_ms": 0.751
+    },
+    {
+      "seed": 6,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 157.89,
+      "risk_reduction": 19.52,
+      "paths_removed": 1,
+      "runtime_ms": 0.98
+    },
+    {
+      "seed": 6,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 491.82,
+      "risk_reduction": 52.39,
+      "paths_removed": 6,
+      "runtime_ms": 30.433
+    },
+    {
+      "seed": 7,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 119.75,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.919
+    },
+    {
+      "seed": 7,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 200.02,
+      "risk_reduction": 13.17,
+      "paths_removed": 2,
+      "runtime_ms": 0.798
+    },
+    {
+      "seed": 7,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 200.02,
+      "risk_reduction": 13.17,
+      "paths_removed": 2,
+      "runtime_ms": 0.819
+    },
+    {
+      "seed": 7,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 119.75,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.848
+    },
+    {
+      "seed": 7,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 436.98,
+      "risk_reduction": 33.17,
+      "paths_removed": 6,
+      "runtime_ms": 31.009
+    },
+    {
+      "seed": 8,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 99.77,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.926
+    },
+    {
+      "seed": 8,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 167.39,
+      "risk_reduction": 22.67,
+      "paths_removed": 0,
+      "runtime_ms": 0.813
+    },
+    {
+      "seed": 8,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 167.39,
+      "risk_reduction": 22.67,
+      "paths_removed": 0,
+      "runtime_ms": 0.783
+    },
+    {
+      "seed": 8,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 149.04,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.881
+    },
+    {
+      "seed": 8,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 467.45,
+      "risk_reduction": 44.15,
+      "paths_removed": 6,
+      "runtime_ms": 30.605
+    },
+    {
+      "seed": 9,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 95.27,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.951
+    },
+    {
+      "seed": 9,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 28.76,
+      "risk_reduction": 5.46,
+      "paths_removed": 0,
+      "runtime_ms": 0.804
+    },
+    {
+      "seed": 9,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 157.71,
+      "risk_reduction": 19.66,
+      "paths_removed": 0,
+      "runtime_ms": 0.768
+    },
+    {
+      "seed": 9,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 50.03,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.858
+    },
+    {
+      "seed": 9,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 465.27,
+      "risk_reduction": 42.3,
+      "paths_removed": 6,
+      "runtime_ms": 30.972
+    },
+    {
+      "seed": 10,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 97.08,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.902
+    },
+    {
+      "seed": 10,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 181.73,
+      "risk_reduction": 12.21,
+      "paths_removed": 1,
+      "runtime_ms": 0.765
+    },
+    {
+      "seed": 10,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 325.27,
+      "risk_reduction": 16.89,
+      "paths_removed": 2,
+      "runtime_ms": 0.82
+    },
+    {
+      "seed": 10,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 97.08,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.981
+    },
+    {
+      "seed": 10,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 498.1,
+      "risk_reduction": 32.21,
+      "paths_removed": 6,
+      "runtime_ms": 31.604
+    },
+    {
+      "seed": 11,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 272.17,
+      "risk_reduction": 0.0,
+      "paths_removed": 2,
+      "runtime_ms": 0.9
+    },
+    {
+      "seed": 11,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 124.92,
+      "risk_reduction": 12.53,
+      "paths_removed": 0,
+      "runtime_ms": 0.812
+    },
+    {
+      "seed": 11,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 124.92,
+      "risk_reduction": 12.53,
+      "paths_removed": 0,
+      "runtime_ms": 0.808
+    },
+    {
+      "seed": 11,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 272.17,
+      "risk_reduction": 0.0,
+      "paths_removed": 2,
+      "runtime_ms": 0.837
+    },
+    {
+      "seed": 11,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 490.28,
+      "risk_reduction": 32.53,
+      "paths_removed": 6,
+      "runtime_ms": 30.401
+    },
+    {
+      "seed": 12,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 108.36,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.919
+    },
+    {
+      "seed": 12,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 174.59,
+      "risk_reduction": 18.67,
+      "paths_removed": 0,
+      "runtime_ms": 0.806
+    },
+    {
+      "seed": 12,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 169.15,
+      "risk_reduction": 18.94,
+      "paths_removed": 0,
+      "runtime_ms": 0.787
+    },
+    {
+      "seed": 12,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 245.7,
+      "risk_reduction": 0.0,
+      "paths_removed": 2,
+      "runtime_ms": 0.851
+    },
+    {
+      "seed": 12,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 484.77,
+      "risk_reduction": 46.42,
+      "paths_removed": 6,
+      "runtime_ms": 31.243
+    },
+    {
+      "seed": 13,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 104.52,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.951
+    },
+    {
+      "seed": 13,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 160.63,
+      "risk_reduction": 20.04,
+      "paths_removed": 0,
+      "runtime_ms": 0.782
+    },
+    {
+      "seed": 13,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 160.63,
+      "risk_reduction": 20.04,
+      "paths_removed": 0,
+      "runtime_ms": 0.826
+    },
+    {
+      "seed": 13,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 250.87,
+      "risk_reduction": 0.0,
+      "paths_removed": 2,
+      "runtime_ms": 0.847
+    },
+    {
+      "seed": 13,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 467.41,
+      "risk_reduction": 40.04,
+      "paths_removed": 6,
+      "runtime_ms": 30.857
+    },
+    {
+      "seed": 14,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 13.55,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.916
+    },
+    {
+      "seed": 14,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 13.55,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.822
+    },
+    {
+      "seed": 14,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 37.42,
+      "risk_reduction": 5.99,
+      "paths_removed": 0,
+      "runtime_ms": 0.828
+    },
+    {
+      "seed": 14,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 109.42,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.986
+    },
+    {
+      "seed": 14,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 453.34,
+      "risk_reduction": 34.87,
+      "paths_removed": 6,
+      "runtime_ms": 30.832
+    },
+    {
+      "seed": 15,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 140.69,
+      "risk_reduction": 2.52,
+      "paths_removed": 1,
+      "runtime_ms": 0.919
+    },
+    {
+      "seed": 15,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 140.69,
+      "risk_reduction": 2.52,
+      "paths_removed": 1,
+      "runtime_ms": 0.8
+    },
+    {
+      "seed": 15,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 137.48,
+      "risk_reduction": 13.65,
+      "paths_removed": 0,
+      "runtime_ms": 0.784
+    },
+    {
+      "seed": 15,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 140.69,
+      "risk_reduction": 2.52,
+      "paths_removed": 1,
+      "runtime_ms": 0.905
+    },
+    {
+      "seed": 15,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 526.36,
+      "risk_reduction": 33.65,
+      "paths_removed": 6,
+      "runtime_ms": 30.261
+    },
+    {
+      "seed": 16,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 121.99,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.898
+    },
+    {
+      "seed": 16,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 30.86,
+      "risk_reduction": 11.02,
+      "paths_removed": 0,
+      "runtime_ms": 0.828
+    },
+    {
+      "seed": 16,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 172.38,
+      "risk_reduction": 17.13,
+      "paths_removed": 1,
+      "runtime_ms": 0.778
+    },
+    {
+      "seed": 16,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 121.99,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.842
+    },
+    {
+      "seed": 16,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 448.7,
+      "risk_reduction": 38.98,
+      "paths_removed": 6,
+      "runtime_ms": 31.17
+    },
+    {
+      "seed": 17,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 147.97,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.909
+    },
+    {
+      "seed": 17,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 255.51,
+      "risk_reduction": 20.27,
+      "paths_removed": 2,
+      "runtime_ms": 0.785
+    },
+    {
+      "seed": 17,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 255.51,
+      "risk_reduction": 20.27,
+      "paths_removed": 2,
+      "runtime_ms": 0.816
+    },
+    {
+      "seed": 17,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 147.97,
+      "risk_reduction": 0.0,
+      "paths_removed": 1,
+      "runtime_ms": 0.838
+    },
+    {
+      "seed": 17,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 498.19,
+      "risk_reduction": 44.73,
+      "paths_removed": 6,
+      "runtime_ms": 30.453
+    },
+    {
+      "seed": 18,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 73.61,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.908
+    },
+    {
+      "seed": 18,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 73.61,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.794
+    },
+    {
+      "seed": 18,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 154.3,
+      "risk_reduction": 12.27,
+      "paths_removed": 1,
+      "runtime_ms": 0.753
+    },
+    {
+      "seed": 18,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 73.61,
+      "risk_reduction": 0.0,
+      "paths_removed": 0,
+      "runtime_ms": 0.979
+    },
+    {
+      "seed": 18,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 443.16,
+      "risk_reduction": 32.27,
+      "paths_removed": 6,
+      "runtime_ms": 30.374
+    },
+    {
+      "seed": 19,
+      "policy": "cvss",
+      "cost": 3,
+      "objective_reduction": 239.47,
+      "risk_reduction": 23.95,
+      "paths_removed": 2,
+      "runtime_ms": 0.914
+    },
+    {
+      "seed": 19,
+      "policy": "severity_plus_exploitation",
+      "cost": 3,
+      "objective_reduction": 239.47,
+      "risk_reduction": 23.95,
+      "paths_removed": 2,
+      "runtime_ms": 0.839
+    },
+    {
+      "seed": 19,
+      "policy": "contextual",
+      "cost": 3,
+      "objective_reduction": 314.64,
+      "risk_reduction": 24.04,
+      "paths_removed": 2,
+      "runtime_ms": 0.98
+    },
+    {
+      "seed": 19,
+      "policy": "centrality",
+      "cost": 3,
+      "objective_reduction": 239.47,
+      "risk_reduction": 23.95,
+      "paths_removed": 2,
+      "runtime_ms": 0.971
+    },
+    {
+      "seed": 19,
+      "policy": "cyvra_greedy",
+      "cost": 3,
+      "objective_reduction": 487.47,
+      "risk_reduction": 43.95,
+      "paths_removed": 6,
+      "runtime_ms": 41.752
+    }
+  ]
+}

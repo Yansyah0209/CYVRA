@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16.8-alpine
+    environment:
+      POSTGRES_DB: cyvra
+      POSTGRES_USER: cyvra
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cyvra_local_only}
+    volumes:
+      - cyvra_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cyvra -d cyvra"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://cyvra:cyvra_local_only@db:5432/cyvra}
+      CYVRA_API_KEY: ${CYVRA_API_KEY:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+  frontend:
+    build: ./frontend
+    environment:
+      BACKEND_URL: http://backend:8000
+      CYVRA_API_KEY: ${CYVRA_API_KEY:-}
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - backend
+volumes:
+  cyvra_data:
