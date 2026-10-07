@@ -96,11 +96,19 @@ def import_data(project_id: str, body: Dataset, db: Session = Depends(session)):
 
 @app.post("/api/projects/{project_id}/demo")
 def demo(project_id: str, db: Session = Depends(session)):
-    path = Path(
-        os.getenv("DEMO_DATA_PATH", str(Path(__file__).resolve().parents[2] / "datasets/synthetic/aurora.json"))
+    app_root = Path(__file__).resolve().parents[1]
+    configured = os.getenv("DEMO_DATA_PATH")
+    candidates = (
+        [Path(configured)]
+        if configured
+        else [
+            app_root / "datasets/synthetic/aurora.json",
+            app_root.parent / "datasets/synthetic/aurora.json",
+        ]
     )
-    if not path.exists():
-        path = Path(__file__).resolve().parents[2] / "../datasets/synthetic/aurora.json"
+    path = next((p for p in candidates if p.is_file()), None)
+    if path is None:
+        raise HTTPException(503, "Demo dataset unavailable; check DEMO_DATA_PATH")
     return import_data(project_id, Dataset.model_validate(json.loads(path.read_text())), db)
 
 

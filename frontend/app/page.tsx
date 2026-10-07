@@ -155,6 +155,9 @@ export default function Dashboard() {
   const refresh = useCallback(async (id: string) => {
     const a = await api<Analysis>("projects/" + id + "/analysis");
     setAnalysis(a);
+    setProjects((v) =>
+      v.map((p) => (p.id === id ? { ...p, has_data: true } : p)),
+    );
     setSelected(null);
     setSimulation(null);
     setAnswer(null);
@@ -185,7 +188,7 @@ export default function Dashboard() {
         : window.prompt("Environment name");
       if (!name) return;
       const p = await api<Project>("projects", { name });
-      setProjects((v) => [...v, p]);
+      setProjects((v) => [...v, { ...p, has_data: false }]);
       setProject(p.id);
       setAnalysis(null);
       setPlan(null);

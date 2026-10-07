@@ -41,5 +41,29 @@ test("demo evidence, graph, counterfactuals and grounded explanation", async ({
       () => document.documentElement.scrollWidth > innerWidth,
     ),
   ).toBe(false);
+  const original = await page.getByLabel("Select environment").inputValue();
+  const newResponse = await page.request.post("/api/projects", {
+    data: { name: "Initially empty environment" },
+  });
+  const fresh = await newResponse.json();
+  await page.reload();
+  await expect(
+    page.getByRole("option", { name: "Initially empty environment" }),
+  ).toBeAttached();
+  await page.getByLabel("Select environment").selectOption(fresh.id);
+  await page
+    .getByRole("button", { name: "Load synthetic dataset", exact: true })
+    .click();
+  await expect(
+    page.getByText("Prioritized findings", { exact: true }),
+  ).toBeVisible();
+  await page.getByLabel("Select environment").selectOption(original);
+  await expect(
+    page.getByText("Prioritized findings", { exact: true }),
+  ).toBeVisible();
+  await page.getByLabel("Select environment").selectOption(fresh.id);
+  await expect(
+    page.getByText("Prioritized findings", { exact: true }),
+  ).toBeVisible();
   expect(errors).toEqual([]);
 });

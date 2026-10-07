@@ -1,6 +1,6 @@
 # Validation recorded for this implementation
 
-- 25 pytest backend unit/integration tests passed: risk scores and context ordering, freshness and missing evidence, correlated-source handling, contradictions, reference/range checks, cycles, parallel edges, search bounds, zero-hop paths, all-resolved inputs, intervention immutability, alternate entries, controls, optimization budget, project imports, API key, oversized payloads, and grounded explanations.
+- 27 pytest backend unit/integration tests passed: risk scores and context ordering, freshness and missing evidence, correlated-source handling, contradictions, reference/range checks, cycles, parallel edges, search bounds, zero-hop paths, all-resolved inputs, intervention immutability, alternate entries, controls, optimization budget, project imports, API key, oversized payloads, and grounded explanations.
 - Python Ruff lint and formatting passed.
 - Alembic initial migration completed against SQLite.
 - Next.js production build and TypeScript checks passed; standalone static files prepared.
@@ -13,4 +13,4 @@
 ## Unverified locally
 Docker and a PostgreSQL server were unavailable, so Compose execution and PostgreSQL integration were not tested here. Browser tests could not run because browser archive downloads returned invalid/truncated files in the execution environment. A Playwright workflow test is supplied and wired into CI, but no local browser pass is claimed. No visual screenshot inspection was possible.
 
-A third-party Starlette TestClient deprecation warning about its httpx transport appears during pytest; tests pass. Live GitHub Actions results are separate from local checks and must be reviewed on the PR. No public deployment, multi-tenant production test, independent incident calibration, or patent assessment was performed.
+A third-party Starlette TestClient deprecation warning about its httpx transport appears during pytest; tests pass. The initial GitHub Actions run https://github.com/Yansyah0209/CYVRA/actions/runs/37578768126 passed backend, frontend, and browser workflow jobs. The browser job exercised evidence, graph rendering, patch simulation, combined plans, assistant citations, and mobile overflow. Later CI revisions add empty-environment switching and Docker Compose coverage; inspect the latest run on the PR for their status. No public deployment, multi-tenant production test, independent incident calibration, or patent assessment was performed.

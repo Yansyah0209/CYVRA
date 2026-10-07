@@ -66,3 +66,24 @@ def test_optional_api_key(client, monkeypatch):
 
 def test_request_limit(client):
     assert client.post("/api/projects", content="x" * 2_000_001).status_code == 413
+
+
+def test_demo_in_container_layout(client, data, tmp_path, monkeypatch):
+    import json
+    from app import main
+
+    app_dir = tmp_path / "app"
+    app_dir.mkdir()
+    fixture = tmp_path / "datasets/synthetic/aurora.json"
+    fixture.parent.mkdir(parents=True)
+    fixture.write_text(json.dumps(data.model_dump(mode="json")))
+    monkeypatch.setattr(main, "__file__", str(app_dir / "main.py"))
+    project = client.post("/api/projects", json={"name": "container layout"}).json()["id"]
+    assert client.post(f"/api/projects/{project}/demo").status_code == 200
+    assert client.get(f"/api/projects/{project}/analysis").json()["summary"]["findings"] == 7
+
+
+def test_demo_missing_configuration(client, monkeypatch, tmp_path):
+    monkeypatch.setenv("DEMO_DATA_PATH", str(tmp_path / "absent.json"))
+    project = client.post("/api/projects", json={"name": "missing fixture"}).json()["id"]
+    assert client.post(f"/api/projects/{project}/demo").status_code == 503
