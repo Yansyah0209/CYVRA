@@ -124,7 +124,7 @@ test("real API rejects private targets through frontend proxy", async ({
   await page
     .getByRole("button", { name: "Check website", exact: true })
     .click();
-  await expect(page.getByRole("alert")).toContainText(
+  await expect(page.locator(".web-workspace [role=alert]")).toContainText(
     "local/private targets are blocked",
   );
 });

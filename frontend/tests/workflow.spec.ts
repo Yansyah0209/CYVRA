@@ -48,9 +48,7 @@ test("demo evidence, graph, counterfactuals and grounded explanation", async ({
   const fresh = await newResponse.json();
   await page.reload();
   await page.getByRole("button", { name: "Overview", exact: true }).click();
-  await expect(
-    page.getByRole("option", { name: "Initially empty environment" }),
-  ).toBeAttached();
+  await expect(page.locator(`option[value="${fresh.id}"]`)).toBeAttached();
   await page.getByLabel("Select environment").selectOption(fresh.id);
   await page
     .getByRole("button", { name: "Load synthetic dataset", exact: true })
